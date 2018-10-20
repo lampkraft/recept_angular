@@ -7,7 +7,7 @@ import { HttpResponse } from '@angular/common/http';
 @Component({
   selector: 'recept-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css'],
+  styleUrls: ['./main.component.less'],
   providers: [RecipeService]
 })
 export class MainComponent implements OnInit {
