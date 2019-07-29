@@ -1,0 +1,54 @@
+<recept-toolbar>
+	<h1 class="toolbar-title">{{title}}</h1>
+	<button mat-icon-button (click)="navigateBack()"><mat-icon>arrow_forward_ios</mat-icon></button>
+</recept-toolbar>
+<div class="content-container">
+	<div class="full-screen-loading-container" *ngIf="loading.loadRecipeLoading"><recept-loading [size]="100"></recept-loading></div>
+	<mat-card>
+		<mat-card-title><h2>{{name || '[Namnlös]'}}</h2></mat-card-title>
+		<mat-card-content>
+			<div class="form-container">
+				<!-- <div class="flags">
+					<recept-recipe-flags></recept-recipe-flags>
+				</div> -->
+				<mat-form-field>
+					<input matInput type="text" placeholder="Namn" value="{{name}}" (keyup)="updateName($event.target.value)" required/>
+				</mat-form-field>
+				<mat-form-field>
+					<textarea matInput [matTextareaAutosize]="true" [matAutosizeMinRows]="1" placeholder="Beskrivning" value="{{description}}" (change)="updateDescription($event.target.value)"></textarea>
+				</mat-form-field>
+			</div>
+		</mat-card-content>
+	</mat-card>
+	<mat-card>
+		<mat-card-title><h2>Bilder</h2></mat-card-title>
+		<mat-card-content>
+			<recept-image-uploader [loading]="loading.loadRecipeImagesLoading" (deleteImage)="onDeleteImage($event)" (uploadImage)="onUploadImage($event)" [uploadedImages]="modifiedImages"></recept-image-uploader>
+		</mat-card-content>
+	</mat-card>
+	<mat-card>
+		<mat-card-title><h2>Ingredienser</h2></mat-card-title>
+		<mat-card-content>
+			<div class="form-container">
+				<recept-ingredient-list [ingredients]=""></recept-ingredient-list>
+				<div class="ingredient-actions-container">
+					<button class="add-item-button" mat-button mat-stroked-button (click)="onAddItem()">+ Lägg till</button>
+				</div>
+			</div>
+		</mat-card-content>
+	</mat-card>
+	<mat-card>
+		<mat-card-title><h2>Inställningar</h2></mat-card-title>
+		<mat-card-content>
+			<div class="form-container">
+				<mat-checkbox>Synlig</mat-checkbox>
+				<mat-checkbox>Dela</mat-checkbox>
+				<mat-checkbox>Visa näringsvärden</mat-checkbox>
+				<mat-checkbox>Visa pris</mat-checkbox>
+			</div>
+		</mat-card-content>
+	</mat-card>
+</div>
+<div class="save-actions-container">
+	<button class="save-button" mat-flat-button color="primary" (click)="onSave(editMode)">Spara</button>
+</div>

@@ -1,0 +1,23 @@
+<recept-create-recipe-page *ngIf="edit != null"
+	[title]="title"
+	[id]="currentRecipe && currentRecipe.id"
+	[name]="currentRecipe && currentRecipe.name"
+	[description]="currentRecipe && currentRecipe.description"
+	[images]="currentRecipe && currentRecipe.images"
+	[editMode]="edit === 'true'"
+	(createRecipe)="createRecipe($event)"
+	(updateRecipe)="updateRecipe($event)"
+	(deleteRecipeImages)="deleteRecipeImages($event)"
+	(back)="navigateToRecipes()"
+	(addItem)="addItem()"
+	[loading]="loading">
+</recept-create-recipe-page>
+<recept-view-recipe-page *ngIf="edit == null"
+	[title]="title"
+	[name]="currentRecipe && currentRecipe.name"
+	[description]="currentRecipe && currentRecipe.description"
+	[images]="currentRecipe && currentRecipe.images"
+	(back)="navigateToRecipes()"
+	(edit)="navigateToEditRecipe()"
+	[loading]="loading">
+</recept-view-recipe-page>

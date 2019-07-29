@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+body {
+	margin: 0px;
+	padding: 0px;
+}
+.no-link-styling {
+	text-decoration: none;
+}
+.content-container {
+	display: flex;
+	flex-direction: column;
+	padding: 16px;
+}
+.mat-form-field-infix {
+	width: unset !important;
+}
+.mat-title {
+	margin: 16px 0 0;
+}
+.full-screen-loading-container {
+	height: 100%;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    top: 0;
+    z-index: 9999;
+}

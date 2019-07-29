@@ -1,6 +1,37 @@
-@hej: #777;
+@color-heading-content: #496bb3;
+@color-content: #8b63aa;
+@color-primary: #7ad0af;
+@color-secondary: #ffffff;
 
 :host {
-	color: @hej;
-	font-family: sans-serif;
+	// background-image: url(../assets/img/background0.png);
+	// background-attachment: fixed;
+    display: block;
+	font-family: 'Letter Gothic Std';
+}
+.mat-sidenav {
+	width: 80%;
+}
+.mat-sidenav-content {
+	margin-left: 0 !important;
+	min-height: calc(100vh - 56px);
+	padding-top: 56px;
+}
+.spinner-container {
+	background-color: rgba(255, 255, 255, 0.5);
+	display: grid;
+	align-items: center;
+	height: 100vh;
+	position: fixed;
+	width: 100vw;
+	z-index: 9999;
+	.mat-spinner {
+		margin: auto;
+	}
+}
+.avatar-img {
+	border-radius: 100%;
+	margin-right: 10px;
+	width: 35px;
+    height: 35px;
 }

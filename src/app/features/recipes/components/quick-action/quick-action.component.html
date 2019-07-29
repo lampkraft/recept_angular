@@ -1,0 +1,11 @@
+<!-- <button mat-fab color="primary" (click)="openEditDialog()" class="quick-action-add-recipe"><mat-icon>menu</mat-icon></button> -->
+<mat-toolbar>  
+	<mat-toolbar-row>
+		<!-- <button mat-icon-button><mat-icon>add_shopping_cart</mat-icon></button> -->
+		<button mat-icon-button (click)="openCreateDialog()"><mat-icon>add</mat-icon></button>
+		<button mat-icon-button (click)="onToggleView()">
+			<mat-icon *ngIf="this.currentView === 'grid'">view_list</mat-icon>
+			<mat-icon *ngIf="this.currentView === 'list'">grid_on</mat-icon>
+		</button>
+	</mat-toolbar-row>
+</mat-toolbar>

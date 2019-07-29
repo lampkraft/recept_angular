@@ -1,1 +1,22 @@
-<recept-main></recept-main>
+<mat-sidenav-container [hasBackdrop]="true">
+	<mat-sidenav class="sidenav-container" mode="side" (closedStart)="closeSideMenu()" opened="{{showSideMenu}}" [disableClose]="false" [autoFocus]="true" [fixedInViewport]="true">
+		<mat-toolbar>
+			<mat-toolbar-row>
+				<img class="avatar-img" src="./assets/img/face.png" width="40px" height="auto">
+				<h2>Hello, Jens</h2>
+			</mat-toolbar-row>
+		</mat-toolbar>
+		<mat-nav-list>
+			<a mat-list-item (click)="navigateHome()">
+				<span matLine>Home</span>
+			</a>
+			<!-- <mat-divider></mat-divider>
+			 <a mat-list-item (click)="navigateLogin()">
+				<span matLine>Login</span>
+			</a> -->
+		</mat-nav-list>
+	</mat-sidenav>
+	<mat-sidenav-content>
+		<router-outlet></router-outlet>
+	</mat-sidenav-content>
+</mat-sidenav-container>

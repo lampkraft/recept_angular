@@ -1,0 +1,22 @@
+<recept-toolbar>
+	<recept-search-recipes [matchingRecipes]="noOfRecipes$ | async"></recept-search-recipes>
+</recept-toolbar>
+<div class="full-screen-loading-container" *ngIf="loading.recipesLoading || loading.deleteRecipeLoading"><recept-loading [size]="100"></recept-loading></div>
+<div class="recipes-container grid-view" *ngIf="recipeView === 'grid' && recipePosts && recipePosts.length > 0">
+	<mat-card class="recipe-post-container" [ngClass]="{ 'expanded': expandedPost === recipe.title }" *ngFor="let recipe of recipePosts">
+		<recept-recipe-post *ngIf="recipe != null" (deleteRecipe)="onDeleteRecipe($event)" [recipeView]="recipeView" [recipe]="recipe"></recept-recipe-post>
+	</mat-card>
+</div>
+<div class="recipes-container list-view" *ngIf="recipeView === 'list' && recipePosts && recipePosts.length > 0">
+	<mat-nav-list>
+		<div *ngFor="let recipe of recipePosts">
+			<recept-recipe-post-list *ngIf="recipe != null" (deleteRecipe)="onDeleteRecipe($event)" [recipe]="recipe"></recept-recipe-post-list>
+			<mat-divider></mat-divider>
+		</div>
+	</mat-nav-list>
+</div>
+<recept-quick-action [currentView]="recipeView" (toggleView)="onToggleRecipesView($event)"></recept-quick-action>
+<div *ngIf="recipePosts && recipePosts.length === 0" class="empty-recipes-container">
+	<span class="mat-caption">Det finns ännu inga recept i ditt bibliotek.</span>
+	<button mat-stroked-button>Skapa nytt recept</button>
+</div>

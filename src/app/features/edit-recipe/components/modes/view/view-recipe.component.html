@@ -1,0 +1,28 @@
+<recept-toolbar>
+	<h1 class="toolbar-title">{{title}}</h1>
+	<button mat-icon-button (click)="navigateBack()"><mat-icon>arrow_forward_ios</mat-icon></button>
+</recept-toolbar>
+<div class="heading-image">
+	<img src="{{headingImage}}">
+</div>
+
+<content class="content-container">
+		<!-- *ngIf="loading.loadRecipeLoading" -->
+	<div class="full-screen-loading-container" *ngIf="loading.loadRecipeLoading"><recept-loading [size]="100"></recept-loading></div>
+	<h2 class="mat-headline title-text">{{name}}<button mat-icon-button (click)="navigateToEditRecipe()"><mat-icon>edit</mat-icon></button></h2>
+	<recept-image-uploader [loading]="loading.loadRecipeImagesLoading" [readOnly]="true" [uploadedImages]="images"></recept-image-uploader>
+	<p class="mat-body">{{description}}</p>
+	<h3 class="mat-title">Ingredienser</h3>
+	<mat-list>
+		<mat-list-item>Pepper 5 g</mat-list-item>
+		<mat-list-item>Salt 1 kg</mat-list-item>
+		<mat-list-item>Paprika 2 st</mat-list-item>
+		<mat-list-item>Salt 1 kg</mat-list-item>
+		<mat-list-item>Paprika 2 st</mat-list-item>
+		<mat-list-item>Salt 1 kg</mat-list-item>
+		<mat-list-item>Paprika 2 st</mat-list-item>
+	</mat-list>
+	<h3 class="mat-title">Instruktioner</h3>
+	<p class="mat-body">Instruktionerns för detta recept har förvirrat många så jag ska försöka hålla mig kort. Börja med att ändra graderna till 200. Sedan börjar du fräsa morötterna.</p>
+	<!-- <recept-recipe-flags></recept-recipe-flags> -->
+</content>

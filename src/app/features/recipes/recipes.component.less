@@ -1,0 +1,47 @@
+.recipes-container {
+	display: grid;
+	grid-gap: 20px;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	grid-auto-rows: 370px;
+	margin: 20px;
+	padding-bottom: 50px;
+
+	.mat-card {
+		// background-color: #fff2d5;
+	}
+
+	&.list-view {
+		display: block;
+		margin: 0;
+
+		.recipe-post-container {
+		}
+	}
+	
+	.recipe-post-container {
+		overflow: hidden;
+		padding-top: 0;
+		&.expanded {
+			grid-row-end: span 2;
+			overflow-y: auto;
+		}
+	}
+}
+.empty-recipes-container {
+	display: flex;
+    flex-direction: column;
+    height: calc(100vh - 56px);
+    align-items: center;
+    justify-content: center;
+	width: 100%;
+	.mat-stroked-button {
+		margin-top: 5px;
+	}
+}
+.mat-list-base {
+	padding-top: 0px;
+}
+
+::ng-deep .mat-sidenav-backdrop.mat-sidenav-shown {
+	display: none;
+} 

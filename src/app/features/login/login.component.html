@@ -1,0 +1,13 @@
+<recept-toolbar>
+	<h1>{{title}}</h1>
+	<div></div>
+</recept-toolbar>
+<div class="content-container">
+	<mat-form-field>
+		<input matInput type="text" placeholder="Username" (change)="updateUserName($event.target.value)" required/>
+	</mat-form-field>
+	<mat-form-field>
+		<input matInput type="text" placeholder="Password" (change)="updatePassword($event.target.value)" required/>
+	</mat-form-field>
+	<button class="login-button" mat-raised-button (click)="login()">Login</button>
+</div>

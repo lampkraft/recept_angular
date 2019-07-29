@@ -1,0 +1,15 @@
+<mat-list-item [disableRipple]="false" (click)="navigateToViewRecipe(recipe.id)">
+	<div mat-list-icon class="image-container">
+		<img *ngIf="recipe.base64Thumbnail" class="recipe-image" [src]="recipe.base64Thumbnail">
+		<mat-icon *ngIf="!recipe.base64Thumbnail" class="missing-picture">photo</mat-icon>
+	</div><!-- src="assets/img/{{recipe.images[0]}}"-->
+	<h1 mat-line>{{ recipe.name }}</h1>
+	<h2 mat-line>{{ recipe.description }}</h2>
+	<button mat-icon-button class="action-menu" [matMenuTriggerFor]="postActions" (click)="$event.stopPropagation()"><mat-icon>more_vert</mat-icon></button>
+	<mat-menu #postActions="matMenu">
+		<button mat-menu-item>Dela</button>
+		<button mat-menu-item (click)="navigateToEditRecipe(recipe.id)">Ändra</button>
+		<mat-divider></mat-divider>
+		<button mat-menu-item (click)="onDeleteRecipe()">Ta bort</button>
+	</mat-menu>
+</mat-list-item>
