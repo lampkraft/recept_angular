@@ -19,7 +19,9 @@ const initialState: FeatureState = {
 	loadRecipeLoading: false,
 	loadRecipeErrorMessage: '',
 	loadRecipeImagesLoading: false,
-	loadRecipeImagesErrorMessage: ''
+	loadRecipeImagesErrorMessage: '',
+	ingredientSearchResult: null,
+	ingredientItems: []
 };
 
 export function editRecipeReducer (state = initialState, action: EditRecipeActions): FeatureState {
@@ -95,6 +97,21 @@ export function editRecipeReducer (state = initialState, action: EditRecipeActio
 		return {
 			...state,
 			loadRecipeImagesLoading: false
+		}
+	case EditRecipeActionTypes.searchIngredientSuccess:
+		return {
+			...state,
+			ingredientSearchResult: action.payload
+		}
+	case EditRecipeActionTypes.addIngredientItem:
+		return {
+			...state,
+			ingredientItems: [ ...state.ingredientItems, action.payload]
+		}
+	case EditRecipeActionTypes.removeIngredientItem:
+		return {
+			...state,
+			ingredientItems: state.ingredientItems.filter(ingredient => ingredient.name !== action.payload.name) // Todo create collection for this
 		}
 	default:
 		return state;

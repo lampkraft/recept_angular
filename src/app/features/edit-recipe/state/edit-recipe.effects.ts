@@ -4,13 +4,14 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
 import { mergeMap, catchError, map, concatMap, filter } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { EditRecipeActionTypes, EditRecipeActions, CreateRecipeSuccess, CreateRecipeFailed, CreateRecipe, LoadRecipeSuccess, LoadRecipeFailed, LoadRecipeImages, LoadRecipeImagesSuccess, LoadRecipeImagesFailed, UpdateRecipeSuccess, UpdateRecipeFailed, DeleteRecipeImages, DeleteRecipeImagesSuccess, DeleteRecipeImagesFailed, CreateRecipeImages, CreateRecipeImagesSuccess, CreateRecipeImagesFailed } from './edit-recipe.actions';
+import { EditRecipeActionTypes, EditRecipeActions, CreateRecipeSuccess, CreateRecipeFailed, CreateRecipe, LoadRecipeSuccess, LoadRecipeFailed, LoadRecipeImages, LoadRecipeImagesSuccess, LoadRecipeImagesFailed, UpdateRecipeSuccess, UpdateRecipeFailed, DeleteRecipeImages, DeleteRecipeImagesSuccess, DeleteRecipeImagesFailed, CreateRecipeImages, CreateRecipeImagesSuccess, CreateRecipeImagesFailed, SearchIngredient, SearchIngredientSuccess, SearchIngredientFailed } from './edit-recipe.actions';
 import { IRecipeImage } from 'src/app/models/recipe';
+import { IngredientsService } from 'src/app/services/ingredients.service';
 
 @Injectable()
 export class EditRecipeEffects {
 
-	constructor(private actions$: Actions, private recipeService: RecipeService, private snackBar: MatSnackBar) { }
+	constructor(private actions$: Actions, private recipeService: RecipeService, private ingredientsService: IngredientsService, private snackBar: MatSnackBar) { }
 
 	@Effect()
 	updateRecipe$: Observable<any> = this.actions$.pipe(
@@ -89,6 +90,16 @@ export class EditRecipeEffects {
 			.pipe(
 				map(response => new DeleteRecipeImagesSuccess(response)),
 				catchError(err => of(new DeleteRecipeImagesFailed(err)))
+			))
+	)
+
+	@Effect()
+	SearchIngredient$: Observable<any> = this.actions$.pipe(
+		ofType(EditRecipeActionTypes.searchIngredient),
+		mergeMap((action: SearchIngredient) => this.ingredientsService.searchIngredient(action.payload)
+			.pipe(
+				map(response => new SearchIngredientSuccess(response)),
+				catchError(err => of(new SearchIngredientFailed(err)))
 			))
 	)
 

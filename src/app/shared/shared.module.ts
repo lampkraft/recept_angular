@@ -21,6 +21,7 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { LoadingComponent } from '../components/loading/loading.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { LoadingComponent } from '../components/loading/loading.component';
     LoadingComponent
   ],
   exports: [
+    MatAutocompleteModule,
     MatCheckboxModule,
     MatSlideToggleModule,
     MatBottomSheetModule,
@@ -55,6 +57,7 @@ import { LoadingComponent } from '../components/loading/loading.component';
     MatTableModule,
   ],
   imports: [
+    MatAutocompleteModule,
     MatCheckboxModule,
     MatSlideToggleModule,
     MatBottomSheetModule,

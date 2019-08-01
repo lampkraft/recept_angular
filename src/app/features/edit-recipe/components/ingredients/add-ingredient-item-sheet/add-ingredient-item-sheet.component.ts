@@ -13,9 +13,10 @@ export class AddIngredientItemSheetComponent {
   constructor(private bottomSheetRef: MatBottomSheetRef<AddIngredientItemSheetComponent>, private dialog: MatDialog) {}
 
   addIngredient () {
-    let dialogRef = this.dialog.open(AddIngredientDialogComponent, {
+    let dialogRef = this.dialog.open(AddIngredientDialogComponent, {});
+    dialogRef.afterClosed().subscribe(() => {
+      this.bottomSheetRef.dismiss();
     });
-    this.bottomSheetRef.dismiss();
   }
 
 }

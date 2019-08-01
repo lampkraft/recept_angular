@@ -1,4 +1,5 @@
 import { IRecipe, IRecipeImage } from '../../../models/recipe';
+import { AddIngredientItemSheetComponent } from '../components/ingredients/add-ingredient-item-sheet/add-ingredient-item-sheet.component';
 
 export enum EditRecipeActionTypes {
 	updateRecipe = '[Edit Recipe] Edit a recipe',
@@ -19,7 +20,12 @@ export enum EditRecipeActionTypes {
 	deleteRecipeImages = '[Delete Recipe images] Delete images from a recipe',
 	deleteRecipeImagesSuccess = '[Delete Recipe images] Successfully deleted images from a recipe',
 	deleteRecipeImagesFailed = '[Delete Recipe images] Failed to delete images from a recipe',
-	clearCurrentRecipe = '[Clear Current Recipe] Clear currently selected recipe'
+	clearCurrentRecipe = '[Clear Current Recipe] Clear currently selected recipe',
+	searchIngredient = '[Search Ingredient] Search for ingredient',
+	searchIngredientSuccess = '[Search Ingredient success] Successfully made a search for an ingredient',
+	searchIngredientFailed = '[Search Ingredient Failed] Failed to do a search for an ingredient',
+	addIngredientItem = '[Add Ingredient Item] Add a new ingredient to list of ingredients',
+	removeIngredientItem = '[Remove Ingredient Item] Remove an ingredient item from list of ingredients'
 }
 
 export class UpdateRecipe {
@@ -117,6 +123,31 @@ export class ClearCurrentRecipe {
 	constructor (public payload: any) {}
 }
 
+export class SearchIngredient {
+	type = EditRecipeActionTypes.searchIngredient;
+	constructor (public payload: string) {}
+}
+
+export class SearchIngredientSuccess {
+	type = EditRecipeActionTypes.searchIngredientSuccess;
+	constructor (public payload: any) {}
+}
+
+export class SearchIngredientFailed {
+	type = EditRecipeActionTypes.searchIngredientFailed;
+	constructor (public payload: any) {}
+}
+
+export class AddIngredientItem {
+	type = EditRecipeActionTypes.addIngredientItem;
+	constructor (public payload: any) {}
+}
+
+export class RemoveIngredientItem {
+	type = EditRecipeActionTypes.removeIngredientItem;
+	constructor (public payload: any) {}
+}
+
 export type EditRecipeActions = UpdateRecipe
 | UpdateRecipeSuccess
 | UpdateRecipeFailed
@@ -133,4 +164,10 @@ export type EditRecipeActions = UpdateRecipe
 | DeleteRecipeImages
 | DeleteRecipeImagesSuccess
 | DeleteRecipeImagesFailed
-| ClearCurrentRecipe;
+| ClearCurrentRecipe
+| SearchIngredient
+| SearchIngredientSuccess
+| SearchIngredientFailed
+| AddIngredientItem
+| RemoveIngredientItem;
+

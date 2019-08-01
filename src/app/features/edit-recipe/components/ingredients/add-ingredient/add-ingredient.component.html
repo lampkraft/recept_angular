@@ -1,7 +1,12 @@
 <div class="add-ingredient">
 	<mat-form-field class="input-ingredient">
-		<input matInput type="text"/>
+		<input matInput type="text" (keyup)="doSearch($event.target.value)" [matAutocomplete]="auto"/>
 	</mat-form-field>
+	<mat-autocomplete #auto="matAutocomplete">
+		<mat-option *ngFor="let option of searchResult" [value]="option.name" (click)="onSelectIngredient(option)">
+			{{ option.name }}
+		</mat-option>
+	</mat-autocomplete>
 	<!-- <mat-form-field class="input-amount">
 		<input matInput type="text" placeholder="Mängd"/>
 	</mat-form-field>

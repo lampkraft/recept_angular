@@ -1,14 +1,16 @@
 <div class="ingredients-list" >
-	<div class="ingredient-item" *ngFor="let id of ingredientsById">
-		<span>{{ ingredients[id].name + ' ' + ingredients[id].amount }}</span>
-		<button mat-icon-button class="action-menu" [matMenuTriggerFor]="ingredientActions" (click)="$event.stopPropagation()"><mat-icon>more_vert</mat-icon></button>
+	<div class="ingredient-item-container" *ngFor="let ingredient of ingredients">
+		<div class="ingredient-item">
+			<span>{{ ingredient.name }}</span>
+			<button mat-icon-button class="action-menu" [matMenuTriggerFor]="ingredientActions" (click)="$event.stopPropagation()"><mat-icon>more_vert</mat-icon></button>
+		</div>
+		<mat-menu #ingredientActions="matMenu">
+			<button mat-menu-item>Ändra</button>
+			<button mat-menu-item (click)="onRemove(ingredient)">Ta bort</button>
+		</mat-menu>
 	</div>
 </div>
-<div class="ingredient-subheader">
+<!-- <div class="ingredient-subheader">
 	<span>Såsen</span>
 	<button mat-icon-button class="action-menu" [matMenuTriggerFor]="ingredientActions" (click)="$event.stopPropagation()"><mat-icon>more_vert</mat-icon></button>
-</div>
-<mat-menu #ingredientActions="matMenu">
-	<button mat-menu-item>Ändra</button>
-	<button mat-menu-item>Ta bort</button>
-</mat-menu>
+</div> -->

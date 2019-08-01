@@ -14,6 +14,7 @@ import { CreateRecipePageComponent } from './components/modes/create/create-reci
 import { ViewRecipePageComponent } from './components/modes/view/view-recipe.component';
 import { AddIngredientItemSheetComponent } from './components/ingredients/add-ingredient-item-sheet/add-ingredient-item-sheet.component';
 import { AddIngredientDialogComponent } from './components/ingredients/add-ingredient-dialog/add-ingredient-dialog.component';
+import { IngredientsService } from 'src/app/services/ingredients.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AddIngredientDialogComponent } from './components/ingredients/add-ingre
     EffectsModule.forFeature([EditRecipeEffects])
   ],
   providers: [
-    ImageUploadService
+    ImageUploadService,
+    IngredientsService
   ],
 })
 export class EditRecipeModule { }

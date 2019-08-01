@@ -1,4 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { SearchIngredient } from '../../../state/edit-recipe.actions';
 
 @Component({
   selector: 'recept-add-ingredient',
@@ -7,6 +9,9 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class AddIngredientComponent implements OnInit {
   @Output() addIngredient: EventEmitter<any> = new EventEmitter();
+  @Output() search: EventEmitter<string> = new EventEmitter();
+  @Input() searchResult: any[];
+  @Output() selectIngredient: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
@@ -15,6 +20,14 @@ export class AddIngredientComponent implements OnInit {
 
   onAddIngredient () {
     this.addIngredient.emit();
+  }
+
+  doSearch (searchString: string) {
+    this.search.emit(searchString);
+  }
+
+  onSelectIngredient (ingredient: any) {
+    this.selectIngredient.emit(ingredient);
   }
 
 }

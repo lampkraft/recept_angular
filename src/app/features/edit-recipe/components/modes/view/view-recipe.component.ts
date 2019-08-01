@@ -13,6 +13,7 @@ export class ViewRecipePageComponent implements OnInit {
 	@Input() description: string;
 	@Input() images: IRecipeImage[];
 	@Input() loading: Loading;
+	@Input() ingredientItems: any[];
 	@Output() back: EventEmitter<void> = new EventEmitter();
 	@Output() edit: EventEmitter<void> = new EventEmitter();
 	headingImage: IRecipeImage;

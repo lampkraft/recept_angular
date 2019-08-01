@@ -6,37 +6,21 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
   styleUrls: ['./ingredient-list.component.less']
 })
 export class IngredientListComponent implements OnInit {
-  @Output() removeIngredient: EventEmitter<string> = new EventEmitter();
-  @Input() ingredients: any = {
-    '000': {
-      id: '000',
-      name: 'Tofu',
-      amount: '10L',
-    },
-    '111': {
-      id: '111',
-      name: 'Kräm',
-      amount: '1dl',
-    },
-    '222': {
-      id: '222',
-      name: 'Kyckling',
-      amount: '100g',
-    }
-  };
+  @Output() remove: EventEmitter<any> = new EventEmitter();
+  @Input() ingredients: any[];
   ingredientsById;
 
   constructor() {
-    this.ingredientsById = Object.keys(this.ingredients);
+    // this.ingredientsById = Object.keys(this.ingredients);
   }
 
   ngOnInit() {
   }
 
-  onRemoveIngredient (id: string) {
-    delete this.ingredients[id];
-    this.ingredientsById = Object.keys(this.ingredients);
-    this.removeIngredient.emit(id);
+  onRemove (ingredient: any) {
+    // delete this.ingredients[id];
+    // this.ingredientsById = Object.keys(this.ingredients);
+    this.remove.emit(ingredient);
   }
 
 }

@@ -17,12 +17,14 @@ export class CreateRecipePageComponent implements OnInit {
 	@Input() images: string[];
 	@Input() editMode: boolean = false;
 	@Input() loading: Loading;
+	@Input() ingredientItems: any[];
 	@Output() createRecipe: EventEmitter<IRecipe> = new EventEmitter();
 	@Output() updateRecipe: EventEmitter<IRecipe> = new EventEmitter();
 	@Output() createRecipeImages: EventEmitter<IRecipeImage[]> = new EventEmitter();
 	@Output() deleteRecipeImages: EventEmitter<IRecipeImage[]> = new EventEmitter();
 	@Output() addItem: EventEmitter<IRecipeImage[]> = new EventEmitter();
 	@Output() back: EventEmitter<void> = new EventEmitter();
+	@Output() removeIngredient: EventEmitter<void> = new EventEmitter();
 	modifiedImages: IRecipeImage[] = [];
 	removedImages: IRecipeImage[] = [];
 	thumbnailImage: string;
@@ -89,8 +91,12 @@ export class CreateRecipePageComponent implements OnInit {
 		}
 	}
 
-	onAddItem () {
+	addIngredientItem () {
 		this.addItem.emit();
+	}
+
+	onRemoveIngredient (ingredient: any) {
+		this.removeIngredient.emit(ingredient);
 	}
 
 	updateName(value: string) {

@@ -30,9 +30,9 @@
 		<mat-card-title><h2>Ingredienser</h2></mat-card-title>
 		<mat-card-content>
 			<div class="form-container">
-				<recept-ingredient-list [ingredients]=""></recept-ingredient-list>
+				<recept-ingredient-list [ingredients]="ingredientItems" (remove)="onRemoveIngredient($event)"></recept-ingredient-list>
 				<div class="ingredient-actions-container">
-					<button class="add-item-button" mat-button mat-stroked-button (click)="onAddItem()">+ Lägg till</button>
+					<button class="add-item-button" mat-button mat-stroked-button (click)="addIngredientItem()">+ Lägg till</button>
 				</div>
 			</div>
 		</mat-card-content>

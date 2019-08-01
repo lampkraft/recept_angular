@@ -5,6 +5,8 @@
 	[description]="currentRecipe && currentRecipe.description"
 	[images]="currentRecipe && currentRecipe.images"
 	[editMode]="edit === 'true'"
+	[ingredientItems]="ingredientItems"
+	(removeIngredient)="removeIngredient($event)"
 	(createRecipe)="createRecipe($event)"
 	(updateRecipe)="updateRecipe($event)"
 	(deleteRecipeImages)="deleteRecipeImages($event)"

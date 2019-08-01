@@ -2,10 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { ImageUploadService } from './services/image-upload.service';
-import { CreateRecipe, LoadRecipe, LoadRecipeImages, UpdateRecipe, DeleteRecipeImages, ClearCurrentRecipe } from './state/edit-recipe.actions';
+import { CreateRecipe, LoadRecipe, LoadRecipeImages, UpdateRecipe, DeleteRecipeImages, ClearCurrentRecipe, RemoveIngredientItem } from './state/edit-recipe.actions';
 import { IRecipe, IRecipeImage } from 'src/app/models/recipe';
 import { Observable, Subject } from 'rxjs';
-import { selectCurrentRecipe, selectLoading } from './state/edit-recipe.selectors';
+import { selectCurrentRecipe, selectLoading, selectIngredientItems } from './state/edit-recipe.selectors';
 import { takeUntil } from 'rxjs/operators';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { AddIngredientItemSheetComponent } from './components/ingredients/add-ingredient-item-sheet/add-ingredient-item-sheet.component';
@@ -25,6 +25,8 @@ export class EditRecipeComponent implements OnInit {
   currentRecipeSubscriber$: Subject<void> = new Subject();
   loading: Loading;
   loadingSubscriber$: Subject<void> = new Subject();
+  ingredientItems: any[];
+  ingredientItemsSubscriber$: Subject<void> = new Subject();
 
   readonly titles = {
     create: 'Nytt Recept',
@@ -45,6 +47,9 @@ export class EditRecipeComponent implements OnInit {
     });
     this.store.pipe(select(selectLoading), takeUntil(this.loadingSubscriber$)).subscribe((loading: Loading) => {
       this.loading = loading;
+    });
+    this.store.pipe(select(selectIngredientItems), takeUntil(this.ingredientItemsSubscriber$)).subscribe((ingredientItems: any[]) => {
+      this.ingredientItems = ingredientItems;
     });
   }
 
@@ -74,6 +79,10 @@ export class EditRecipeComponent implements OnInit {
 
   addItem () {
     this.bottomSheet.open(AddIngredientItemSheetComponent);
+  }
+
+  removeIngredient (ingredient: any) {
+    this.store.dispatch(new RemoveIngredientItem(ingredient));
   }
 
   navigateToRecipes() {

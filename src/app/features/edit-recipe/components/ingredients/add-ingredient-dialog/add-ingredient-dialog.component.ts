@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { Store, select } from '@ngrx/store';
+import { SearchIngredient, AddIngredientItem } from '../../../state/edit-recipe.actions';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { selectIngredientSearchResult } from '../../../state/edit-recipe.selectors';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'recept-add-ingredient-dialog',
@@ -7,7 +13,38 @@ import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
   styleUrls: ['./add-ingredient-dialog.component.less']
 })
 export class AddIngredientDialogComponent {
+  searchResult: any[];
+  searchResultSubscriber$: Subject<void> = new Subject();
+  selectedIngredient: any;
 
-  constructor() {}
+  constructor(private store: Store<any>, public dialogRef: MatDialogRef<AddIngredientDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {}
+
+  ngOnInit () {
+    this.store.pipe(select(selectIngredientSearchResult), takeUntil(this.searchResultSubscriber$)).subscribe((searchResult: any[]) => {
+      this.searchResult = searchResult;
+    });
+  }
+
+  search(searchString: string) {
+    this.store.dispatch(new SearchIngredient(searchString));
+  }
+
+  selectIngredient (ingredient: any) {
+    this.selectedIngredient = ingredient;
+  }
+
+  accept () {
+    this.store.dispatch(new AddIngredientItem(this.selectedIngredient));
+    this.dialogRef.close();
+  }
+
+  cancel () {
+    this.dialogRef.close();
+  }
+
+  ngOnDestroy () {
+    this.searchResultSubscriber$.next();
+    this.searchResultSubscriber$.complete();
+  }
 
 }

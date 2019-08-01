@@ -14,14 +14,16 @@ export interface FeatureState {
 	loadRecipeLoading: boolean,
 	loadRecipeErrorMessage: string,
 	loadRecipeImagesLoading: boolean,
-	loadRecipeImagesErrorMessage: string
+	loadRecipeImagesErrorMessage: string,
+	ingredientSearchResult: any[],
+	ingredientItems: any[]
 }
 
 export const selectFeature = createFeatureSelector<FeatureState>('edit-recipe');
 
 export const selectCurrentRecipe = createSelector(
 	selectFeature,
-	(state: FeatureState) => {
+	(state: FeatureState): IRecipe => {
 		return state.currentRecipe;
 	}
 );
@@ -35,5 +37,19 @@ export const selectLoading = createSelector(
 			loadRecipeLoading: state.loadRecipeLoading,
 			loadRecipeImagesLoading: state.loadRecipeImagesLoading
 		}
+	}
+);
+
+export const selectIngredientSearchResult = createSelector(
+	selectFeature,
+	(state: FeatureState): any[] => {
+		return state.ingredientSearchResult;
+	}
+);
+
+export const selectIngredientItems = createSelector(
+	selectFeature,
+	(state: FeatureState): any[] => {
+		return state.ingredientItems;
 	}
 );
