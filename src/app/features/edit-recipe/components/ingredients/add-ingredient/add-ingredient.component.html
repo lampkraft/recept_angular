@@ -3,8 +3,8 @@
 		<input matInput type="text" (keyup)="doSearch($event.target.value)" [matAutocomplete]="auto"/>
 	</mat-form-field>
 	<mat-autocomplete #auto="matAutocomplete">
-		<mat-option *ngFor="let option of searchResult" [value]="option.name" (click)="onSelectIngredient(option)">
-			{{ option.name }}
+		<mat-option *ngFor="let option of searchResult" [value]="option.namn" (click)="onSelectIngredient(option)">
+			{{ option.namn }}
 		</mat-option>
 	</mat-autocomplete>
 	<!-- <mat-form-field class="input-amount">

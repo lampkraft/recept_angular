@@ -2,10 +2,10 @@
 	<h1 class="toolbar-title">{{title}}</h1>
 	<button mat-icon-button (click)="navigateBack()"><mat-icon>arrow_forward_ios</mat-icon></button>
 </recept-toolbar>
-<div class="content-container">
+<div class="content-container no-padding">
 	<div class="full-screen-loading-container" *ngIf="loading.loadRecipeLoading"><recept-loading [size]="100"></recept-loading></div>
-	<mat-card>
-		<mat-card-title><h2>{{name || '[Namnlös]'}}</h2></mat-card-title>
+	<mat-card class="card-settings">
+		<mat-card-title><h2 class="mat-title">{{name || '[Namnlös]'}}</h2></mat-card-title>
 		<mat-card-content>
 			<div class="form-container">
 				<!-- <div class="flags">
@@ -20,25 +20,29 @@
 			</div>
 		</mat-card-content>
 	</mat-card>
-	<mat-card>
-		<mat-card-title><h2>Bilder</h2></mat-card-title>
-		<mat-card-content>
-			<recept-image-uploader [loading]="loading.loadRecipeImagesLoading" (deleteImage)="onDeleteImage($event)" (uploadImage)="onUploadImage($event)" [uploadedImages]="modifiedImages"></recept-image-uploader>
+	<mat-card class="card-settings">
+		<mat-card-title>
+			<h2 class="mat-title">Bilder</h2>
+			<button class="upload-button" (click)="openFileUploader()" mat-stroked-button>
+				+ Lägg till
+			</button>
+		</mat-card-title>
+		<mat-card-content [class.displaynone]="(!modifiedImages || (modifiedImages && !modifiedImages.length)) && !loading.loadRecipeImagesLoading">
+			<recept-image-uploader [loading]="loading.loadRecipeImagesLoading" [fileElementId]="imageUploaderFileElementId" (deleteImage)="onDeleteImage($event)" (uploadImage)="onUploadImage($event)" [uploadedImages]="modifiedImages"></recept-image-uploader>
 		</mat-card-content>
 	</mat-card>
-	<mat-card>
-		<mat-card-title><h2>Ingredienser</h2></mat-card-title>
-		<mat-card-content>
+	<mat-card class="card-settings">
+		<mat-card-title><h2 class="mat-title">Recept</h2><button class="add-item-button" mat-button mat-stroked-button (click)="addIngredientItem()">+ Lägg till</button></mat-card-title>
+		<mat-card-content [class.displaynone]="!ingredientItems || (ingredientItems && !ingredientItems.length)">
 			<div class="form-container">
 				<recept-ingredient-list [ingredients]="ingredientItems" (remove)="onRemoveIngredient($event)"></recept-ingredient-list>
 				<div class="ingredient-actions-container">
-					<button class="add-item-button" mat-button mat-stroked-button (click)="addIngredientItem()">+ Lägg till</button>
 				</div>
 			</div>
 		</mat-card-content>
 	</mat-card>
-	<mat-card>
-		<mat-card-title><h2>Inställningar</h2></mat-card-title>
+	<mat-card class="card-settings">
+		<mat-card-title><h2 class="mat-title">Inställningar</h2></mat-card-title>
 		<mat-card-content>
 			<div class="form-container">
 				<mat-checkbox>Synlig</mat-checkbox>

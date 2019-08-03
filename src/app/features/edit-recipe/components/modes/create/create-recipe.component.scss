@@ -5,7 +5,27 @@
 }
 .content-container {
 	display: grid;
-	grid-gap: 25px;
+	grid-gap: 16px;
+}
+.card-settings {
+	border-top: 1px solid #e2e2e2;
+	border-bottom: 1px solid #e2e2e2;
+	border-radius: 0;
+	box-shadow: unset;
+	display: grid;
+	grid-gap: 16px;
+
+	.mat-card-title {
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+	}
+	.mat-card-title {
+		margin-bottom: 0;
+	}
+	.mat-title {
+		margin: 0;
+	}
 }
 .form-container {
 	display: grid;
@@ -27,7 +47,7 @@
 .save-actions-container {
 	display: flex;
 	justify-content: flex-end;
-	padding: 0 16px 16px 16px;
+	padding: 16px;
 
 	.save-button {
 		flex-grow: 1;

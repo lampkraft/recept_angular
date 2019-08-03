@@ -19,11 +19,11 @@ export class RecipeService {
 	}
 
 	updateRecipe(recipeId: string, recipeData: IRecipeForRequest): Observable<any> {
-		return this.http.put(`${this.recipeBaseUri}/${recipeId}`, { name: recipeData.name, description: recipeData.description, base64Thumbnail: recipeData.base64Thumbnail }, baseHeaderOptions);
+		return this.http.put(`${this.recipeBaseUri}/${recipeId}`, { name: recipeData.name, description: recipeData.description, base64Thumbnail: recipeData.base64Thumbnail, ingredients: recipeData.ingredients }, baseHeaderOptions);
 	}
 
 	createRecipe(recipeData: IRecipeForRequest): Observable<any> {
-		return this.http.post(`${this.recipeBaseUri}`, { name: recipeData.name, description: recipeData.description, base64Thumbnail: recipeData.base64Thumbnail }, baseHeaderOptions);
+		return this.http.post(`${this.recipeBaseUri}`, { name: recipeData.name, description: recipeData.description, base64Thumbnail: recipeData.base64Thumbnail, ingredients: recipeData.ingredients }, baseHeaderOptions);
 	}
 
 	deleteRecipe(recipeId: string): Observable<any> {

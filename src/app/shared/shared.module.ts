@@ -22,6 +22,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { LoadingComponent } from '../components/loading/loading.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     LoadingComponent
   ],
   exports: [
+    DragDropModule,
     MatAutocompleteModule,
     MatCheckboxModule,
     MatSlideToggleModule,
@@ -57,6 +59,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatTableModule,
   ],
   imports: [
+    DragDropModule,
     MatAutocompleteModule,
     MatCheckboxModule,
     MatSlideToggleModule,

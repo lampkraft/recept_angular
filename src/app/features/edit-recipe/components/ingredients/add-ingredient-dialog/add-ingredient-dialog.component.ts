@@ -10,7 +10,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'recept-add-ingredient-dialog',
   templateUrl: './add-ingredient-dialog.component.html',
-  styleUrls: ['./add-ingredient-dialog.component.less']
+  styleUrls: ['./add-ingredient-dialog.component.scss']
 })
 export class AddIngredientDialogComponent {
   searchResult: any[];

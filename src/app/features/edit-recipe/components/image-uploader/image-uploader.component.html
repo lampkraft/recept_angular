@@ -1,16 +1,11 @@
+
 <div class="images-container">
 	<recept-loading *ngIf="loading"></recept-loading>
-	<div class="upload-image-input"><input type="file" id="file" (change)="onUpload($event.target.files)"/>​</div>
+	<div class="upload-image-input"><input type="file" [id]="fileElementId" (change)="onUpload($event.target.files)"/>​</div>
 	<div class="image-grid" *ngIf="uploadedImages && uploadedImages.length > 0">
 		<div *ngFor="let image of uploadedImages" class="uploaded-image-preview">
 			<button *ngIf="!readOnly" class="delete-image-button" (click)="onDeleteImage(image)" mat-icon-button><mat-icon>delete_outline</mat-icon></button>
 			<div class="image-container"><img id="{{ image.id }}" [src]="image.base64Image" (load)="onImageLoad($event.target)"></div>
 		</div>
-	</div>
-	<div class="actions-container">
-		<button *ngIf="!readOnly" class="upload-button" mat-stroked-button>
-			+ Lägg till
-			<label class="file-upload-trigger-area" for="file"></label>
-		</button>
 	</div>
 </div>

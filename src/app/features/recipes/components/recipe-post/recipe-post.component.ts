@@ -6,7 +6,7 @@ import { IRecipe } from 'src/app/models/recipe';
 @Component({
   selector: 'recept-recipe-post',
   templateUrl: './recipe-post.component.html',
-  styleUrls: ['./recipe-post.component.less'],
+  styleUrls: ['./recipe-post.component.scss'],
 })
 export class RecipePostComponent implements OnInit {
   @Input() recipe: IRecipe;

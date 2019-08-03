@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'recept-recipe-post-list',
   templateUrl: './recipe-post-list.component.html',
-  styleUrls: ['./recipe-post-list.component.less'],
+  styleUrls: ['./recipe-post-list.component.scss'],
 })
 export class RecipePostListComponent implements OnInit {
   @Input() recipe: IRecipe;

@@ -2,16 +2,18 @@ import { EditRecipeActionTypes, EditRecipeActions } from './edit-recipe.actions'
 import { IRecipe } from 'src/app/models/recipe';
 import { FeatureState } from './edit-recipe.selectors';
 
+const clearedRecipe: IRecipe = {
+	id: null,
+	name: null,
+	description: null,
+	images: null,
+	base64Thumbnail: null,
+	ingredients: []
+}
 const initialState: FeatureState = {
 	recipePosts: {},
 	recipePostsById: [],
-	currentRecipe: {
-		id: null,
-		name: null,
-		description: null,
-		images: null,
-		base64Thumbnail: null,
-	},
+	currentRecipe: {...clearedRecipe},
 	createRecipeLoading: false,
 	createRecipeErrorMessage: '',
 	updateRecipeLoading: false,
@@ -20,8 +22,7 @@ const initialState: FeatureState = {
 	loadRecipeErrorMessage: '',
 	loadRecipeImagesLoading: false,
 	loadRecipeImagesErrorMessage: '',
-	ingredientSearchResult: null,
-	ingredientItems: []
+	ingredientSearchResult: null
 };
 
 export function editRecipeReducer (state = initialState, action: EditRecipeActions): FeatureState {
@@ -77,7 +78,7 @@ export function editRecipeReducer (state = initialState, action: EditRecipeActio
 	case EditRecipeActionTypes.clearCurrentRecipe:
 		return {
 			...state,
-			currentRecipe: null
+			currentRecipe: {...clearedRecipe}
 		}
 	case EditRecipeActionTypes.loadRecipeImages:
 		return {
@@ -106,12 +107,12 @@ export function editRecipeReducer (state = initialState, action: EditRecipeActio
 	case EditRecipeActionTypes.addIngredientItem:
 		return {
 			...state,
-			ingredientItems: [ ...state.ingredientItems, action.payload]
+			currentRecipe: { ...state.currentRecipe, ingredients: [ ...state.currentRecipe.ingredients, action.payload ] }
 		}
 	case EditRecipeActionTypes.removeIngredientItem:
 		return {
 			...state,
-			ingredientItems: state.ingredientItems.filter(ingredient => ingredient.name !== action.payload.name) // Todo create collection for this
+			currentRecipe: { ...state.currentRecipe, ingredients: state.currentRecipe.ingredients.filter(ingredient => ingredient.id !== action.payload.id)}
 		}
 	default:
 		return state;

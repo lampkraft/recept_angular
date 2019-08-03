@@ -3,9 +3,9 @@ import { Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { ImageUploadService } from './services/image-upload.service';
 import { CreateRecipe, LoadRecipe, LoadRecipeImages, UpdateRecipe, DeleteRecipeImages, ClearCurrentRecipe, RemoveIngredientItem } from './state/edit-recipe.actions';
-import { IRecipe, IRecipeImage } from 'src/app/models/recipe';
+import { IRecipe, IRecipeImage, IIngredient } from 'src/app/models/recipe';
 import { Observable, Subject } from 'rxjs';
-import { selectCurrentRecipe, selectLoading, selectIngredientItems } from './state/edit-recipe.selectors';
+import { selectCurrentRecipe, selectLoading } from './state/edit-recipe.selectors';
 import { takeUntil } from 'rxjs/operators';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { AddIngredientItemSheetComponent } from './components/ingredients/add-ingredient-item-sheet/add-ingredient-item-sheet.component';
@@ -14,7 +14,7 @@ import { Loading } from './model/loading.interface';
 @Component({
   selector: 'recept-edit-recipe',
   templateUrl: './edit-recipe.component.html',
-  styleUrls: ['./edit-recipe.component.less']
+  styleUrls: ['./edit-recipe.component.scss']
 })
 export class EditRecipeComponent implements OnInit {
   pageType: string;
@@ -25,7 +25,7 @@ export class EditRecipeComponent implements OnInit {
   currentRecipeSubscriber$: Subject<void> = new Subject();
   loading: Loading;
   loadingSubscriber$: Subject<void> = new Subject();
-  ingredientItems: any[];
+  ingredientItems: IIngredient[];
   ingredientItemsSubscriber$: Subject<void> = new Subject();
 
   readonly titles = {
@@ -34,7 +34,7 @@ export class EditRecipeComponent implements OnInit {
     view: 'Recept'
   }
 
-  constructor(private bottomSheet: MatBottomSheet, private store: Store<any>, private imageUploadService: ImageUploadService, private router: Router) { }
+  constructor(private bottomSheet: MatBottomSheet, private store: Store<any>, private router: Router) { }
 
   ngOnInit () {
     const urlParams = this.router.parseUrl(this.router.url).queryParams;
@@ -48,9 +48,9 @@ export class EditRecipeComponent implements OnInit {
     this.store.pipe(select(selectLoading), takeUntil(this.loadingSubscriber$)).subscribe((loading: Loading) => {
       this.loading = loading;
     });
-    this.store.pipe(select(selectIngredientItems), takeUntil(this.ingredientItemsSubscriber$)).subscribe((ingredientItems: any[]) => {
-      this.ingredientItems = ingredientItems;
-    });
+    // this.store.pipe(select(selectIngredientItems), takeUntil(this.ingredientItemsSubscriber$)).subscribe((ingredientItems: any[]) => {
+    //   this.ingredientItems = ingredientItems;
+    // });
   }
 
   refreshPageSettings (editMode: string): void {

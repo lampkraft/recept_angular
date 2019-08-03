@@ -6,7 +6,7 @@ import { AddIngredientDialogComponent } from '../add-ingredient-dialog/add-ingre
 @Component({
   selector: 'recept-add-ingredient-item-sheet',
   templateUrl: './add-ingredient-item-sheet.component.html',
-  styleUrls: ['./add-ingredient-item-sheet.component.less']
+  styleUrls: ['./add-ingredient-item-sheet.component.scss']
 })
 export class AddIngredientItemSheetComponent {
 

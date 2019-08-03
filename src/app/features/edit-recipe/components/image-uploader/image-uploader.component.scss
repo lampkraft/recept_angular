@@ -24,7 +24,6 @@
 	grid-auto-rows: 150px;
 	margin-bottom: 16px;
 	.uploaded-image-preview {
-		border-radius: 4px;
 		display: inline-flex;
 		position: relative;
 		overflow: hidden;
@@ -40,7 +39,7 @@
 }
 
 .delete-image-button {
-	background-color: rgba(255, 255, 255, 0.4);
+	background-color: rgba(255, 255, 255, 0.8);
 	bottom: 10px;
 	position: absolute;
 	right: 10px;

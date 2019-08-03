@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'recept-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.less']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
 	title: string = "Login";

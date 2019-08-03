@@ -5,7 +5,7 @@ import { Loading } from '../../../model/loading.interface';
 @Component({
 	selector: 'recept-view-recipe-page',
 	templateUrl: './view-recipe.component.html',
-	styleUrls: ['./view-recipe.component.less']
+	styleUrls: ['./view-recipe.component.scss']
 })
 export class ViewRecipePageComponent implements OnInit {
 	@Input() title: string;

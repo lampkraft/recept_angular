@@ -6,7 +6,7 @@ import { SearchRecipe } from '../../state/recipes.actions';
 @Component({
   selector: 'recept-search-recipes',
   templateUrl: './search-recipes.component.html',
-  styleUrls: ['./search-recipes.component.less'],
+  styleUrls: ['./search-recipes.component.scss'],
 })
 export class SearchRecipesComponent implements OnInit {
   searchString: string = '';

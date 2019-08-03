@@ -7,3 +7,4 @@ export const baseHeaderOptions = {
 		'Authorization': 'Basic amVuczpqZW5zamVucw=='
 	})
 }
+export const baseServiceUrlExternal = 'http://192.168.1.136:8080/rest/external';

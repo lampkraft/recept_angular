@@ -5,10 +5,11 @@ import { IRecipeImage } from 'src/app/models/recipe';
 @Component({
   selector: 'recept-image-uploader',
   templateUrl: './image-uploader.component.html',
-  styleUrls: ['./image-uploader.component.less']
+  styleUrls: ['./image-uploader.component.scss']
 })
 export class ImageUploaderComponent implements OnInit {
   @Input() uploadedImages: IRecipeImage[] = [];
+  @Input() fileElementId: string;
   @Output() uploadImage: EventEmitter<FileList> = new EventEmitter()
   @Output() deleteImage: EventEmitter<string> = new EventEmitter()
   @Input() readOnly: boolean;

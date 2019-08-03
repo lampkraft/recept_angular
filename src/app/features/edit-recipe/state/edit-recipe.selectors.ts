@@ -16,7 +16,6 @@ export interface FeatureState {
 	loadRecipeImagesLoading: boolean,
 	loadRecipeImagesErrorMessage: string,
 	ingredientSearchResult: any[],
-	ingredientItems: any[]
 }
 
 export const selectFeature = createFeatureSelector<FeatureState>('edit-recipe');
@@ -44,12 +43,5 @@ export const selectIngredientSearchResult = createSelector(
 	selectFeature,
 	(state: FeatureState): any[] => {
 		return state.ingredientSearchResult;
-	}
-);
-
-export const selectIngredientItems = createSelector(
-	selectFeature,
-	(state: FeatureState): any[] => {
-		return state.ingredientItems;
 	}
 );

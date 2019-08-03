@@ -14,13 +14,7 @@
 	<p class="mat-body">{{description}}</p>
 	<h3 class="mat-title">Ingredienser</h3>
 	<mat-list>
-		<mat-list-item>Pepper 5 g</mat-list-item>
-		<mat-list-item>Salt 1 kg</mat-list-item>
-		<mat-list-item>Paprika 2 st</mat-list-item>
-		<mat-list-item>Salt 1 kg</mat-list-item>
-		<mat-list-item>Paprika 2 st</mat-list-item>
-		<mat-list-item>Salt 1 kg</mat-list-item>
-		<mat-list-item>Paprika 2 st</mat-list-item>
+		<mat-list-item *ngFor="let ingredient of ingredientItems">{{ ingredient.amount + ingredient.unit + ' ' + ingredient.name }}</mat-list-item>
 	</mat-list>
 	<h3 class="mat-title">Instruktioner</h3>
 	<p class="mat-body">Instruktionerns för detta recept har förvirrat många så jag ska försöka hålla mig kort. Börja med att ändra graderna till 200. Sedan börjar du fräsa morötterna.</p>

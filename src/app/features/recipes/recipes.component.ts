@@ -10,7 +10,7 @@ import { Loading } from './model/loading.interface';
 @Component({
   selector: 'recept-recipes',
   templateUrl: './recipes.component.html',
-  styleUrls: ['./recipes.component.less'],
+  styleUrls: ['./recipes.component.scss'],
 })
 export class RecipesComponent implements OnInit {
   recipePosts: IRecipe[];

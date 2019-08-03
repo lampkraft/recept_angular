@@ -4,7 +4,15 @@ export interface IRecipe {
 	description: string,
 	images: IRecipeImage[],
 	base64Thumbnail: string,
-	ingredients?: any[]
+	ingredients?: IIngredient[]
+}
+
+export interface IIngredient {
+	id: string,
+	name: string,
+	amount: number,
+	unit: string,
+	order: number
 }
 
 export interface IRecipeForRequest {

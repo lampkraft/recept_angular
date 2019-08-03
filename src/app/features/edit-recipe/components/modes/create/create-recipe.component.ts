@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { IRecipe, IRecipeImage } from 'src/app/models/recipe';
+import { IRecipe, IRecipeImage, IIngredient } from 'src/app/models/recipe';
 import { ImageUploadService } from '../../../services/image-upload.service';
 import { Router } from '@angular/router';
 import { Loading } from '../../../model/loading.interface';
@@ -7,7 +7,7 @@ import { Loading } from '../../../model/loading.interface';
 @Component({
 	selector: 'recept-create-recipe-page',
 	templateUrl: './create-recipe.component.html',
-	styleUrls: ['./create-recipe.component.less']
+	styleUrls: ['./create-recipe.component.scss']
 })
 export class CreateRecipePageComponent implements OnInit {
 	@Input() id: string;
@@ -17,7 +17,7 @@ export class CreateRecipePageComponent implements OnInit {
 	@Input() images: string[];
 	@Input() editMode: boolean = false;
 	@Input() loading: Loading;
-	@Input() ingredientItems: any[];
+	@Input() ingredientItems: IIngredient[];
 	@Output() createRecipe: EventEmitter<IRecipe> = new EventEmitter();
 	@Output() updateRecipe: EventEmitter<IRecipe> = new EventEmitter();
 	@Output() createRecipeImages: EventEmitter<IRecipeImage[]> = new EventEmitter();
@@ -28,6 +28,7 @@ export class CreateRecipePageComponent implements OnInit {
 	modifiedImages: IRecipeImage[] = [];
 	removedImages: IRecipeImage[] = [];
 	thumbnailImage: string;
+	imageUploaderFileElementId: string = 'file';
 
 	constructor(private imageUploadService: ImageUploadService) { }
 
@@ -50,6 +51,7 @@ export class CreateRecipePageComponent implements OnInit {
 			description: this.description,
 			base64Thumbnail: this.thumbnailImage,
 			images: this.modifiedImages, // Save all images
+			ingredients: this.ingredientItems
 		});
 	}
 
@@ -62,6 +64,7 @@ export class CreateRecipePageComponent implements OnInit {
 			description: this.description,
 			base64Thumbnail: this.thumbnailImage,
 			images: imagesToBeSaved, // Only get unsaved ones
+			ingredients: this.ingredientItems
 		});
 		// Image handling
 		if (this.removedImages.length > 0) {
@@ -89,6 +92,10 @@ export class CreateRecipePageComponent implements OnInit {
 		} else {
 			this.onCreateRecipe();
 		}
+	}
+
+	openFileUploader () {
+		document.getElementById(this.imageUploaderFileElementId).click();
 	}
 
 	addIngredientItem () {

@@ -5,7 +5,7 @@
 	[description]="currentRecipe && currentRecipe.description"
 	[images]="currentRecipe && currentRecipe.images"
 	[editMode]="edit === 'true'"
-	[ingredientItems]="ingredientItems"
+	[ingredientItems]="currentRecipe && currentRecipe.ingredients"
 	(removeIngredient)="removeIngredient($event)"
 	(createRecipe)="createRecipe($event)"
 	(updateRecipe)="updateRecipe($event)"
@@ -19,6 +19,7 @@
 	[name]="currentRecipe && currentRecipe.name"
 	[description]="currentRecipe && currentRecipe.description"
 	[images]="currentRecipe && currentRecipe.images"
+	[ingredientItems]="currentRecipe && currentRecipe.ingredients"
 	(back)="navigateToRecipes()"
 	(edit)="navigateToEditRecipe()"
 	[loading]="loading">

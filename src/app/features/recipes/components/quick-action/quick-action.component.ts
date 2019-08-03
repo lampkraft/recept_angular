@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'recept-quick-action',
   templateUrl: './quick-action.component.html',
-  styleUrls: ['./quick-action.component.less']
+  styleUrls: ['./quick-action.component.scss']
 })
 export class QuickActionComponent implements OnInit {
   @Output() toggleView = new EventEmitter<string>();

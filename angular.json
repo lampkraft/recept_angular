@@ -123,5 +123,10 @@
       }
     }
   },
-  "defaultProject": "recept"
+  "defaultProject": "recept",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
