@@ -4,16 +4,32 @@
 .missing-picture {
 	opacity: 0.5;
 }
+.mat-list-item {
+	height: 104px;
+	&.mat-2-line {
+		height: 104px;
+	}
+}
 .mat-list-icon {
-	border-radius: 0 !important;
+	// border-radius: 100% !important;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-left: -16px;
 	overflow: hidden;
 	height: 100% !important;
 	width: 72px !important;
+	padding: 0 !important;
 	.recipe-image {
 		height: 100%;
+	}
+}
+.mat-line:not(.post-header-text) {
+	color: #949494;
+}
+.post-header-text {
+	&.mat-line {
+		font-size: 18px;
+		margin-bottom: 4px;
+		white-space: unset;
 	}
 }

@@ -23,14 +23,18 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { LoadingComponent } from '../components/loading/loading.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ImageSliderComponent } from '../components/image-slider/image-slider.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
     ToolbarComponent,
     RecipeFlagsComponent,
-    LoadingComponent
+    LoadingComponent,
+    ImageSliderComponent
   ],
   exports: [
+    ImageSliderComponent,
     DragDropModule,
     MatAutocompleteModule,
     MatCheckboxModule,
@@ -59,6 +63,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatTableModule,
   ],
   imports: [
+    CommonModule,
     DragDropModule,
     MatAutocompleteModule,
     MatCheckboxModule,

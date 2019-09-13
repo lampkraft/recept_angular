@@ -1,7 +1,7 @@
 <div class="ingredients-list" (cdkDropListDropped)="drop($event)" cdkDropList>
 	<div class="ingredient-item-container" *ngFor="let ingredient of ingredients" cdkDrag>
 		<div class="ingredient-item mat-typography">
-			<span>{{ ingredient.name }}</span>
+			<span>{{ ingredient.amount + ingredient.unit + ' ' + ingredient.name }}</span>
 			<button mat-icon-button class="action-menu" [matMenuTriggerFor]="ingredientActions" (click)="$event.stopPropagation()"><mat-icon>more_vert</mat-icon></button>
 		</div>
 		<mat-menu #ingredientActions="matMenu">

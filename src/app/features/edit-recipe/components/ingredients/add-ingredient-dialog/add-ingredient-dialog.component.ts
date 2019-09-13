@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { selectIngredientSearchResult } from '../../../state/edit-recipe.selectors';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { IIngredient } from 'src/app/models/recipe';
 
 @Component({
   selector: 'recept-add-ingredient-dialog',
@@ -15,7 +16,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class AddIngredientDialogComponent {
   searchResult: any[];
   searchResultSubscriber$: Subject<void> = new Subject();
-  selectedIngredient: any;
+  selectedIngredient: IIngredient;
 
   constructor(private store: Store<any>, public dialogRef: MatDialogRef<AddIngredientDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {}
 
@@ -29,7 +30,7 @@ export class AddIngredientDialogComponent {
     this.store.dispatch(new SearchIngredient(searchString));
   }
 
-  selectIngredient (ingredient: any) {
+  updateIngredient (ingredient: IIngredient) {
     this.selectedIngredient = ingredient;
   }
 

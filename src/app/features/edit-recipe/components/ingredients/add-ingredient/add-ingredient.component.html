@@ -3,15 +3,15 @@
 		<input matInput type="text" (keyup)="doSearch($event.target.value)" [matAutocomplete]="auto"/>
 	</mat-form-field>
 	<mat-autocomplete #auto="matAutocomplete">
-		<mat-option *ngFor="let option of searchResult" [value]="option.namn" (click)="onSelectIngredient(option)">
+		<mat-option *ngFor="let option of searchResult" [value]="option.namn" (click)="onUpdateIngredient(option)">
 			{{ option.namn }}
 		</mat-option>
 	</mat-autocomplete>
-	<!-- <mat-form-field class="input-amount">
-		<input matInput type="text" placeholder="Mängd"/>
+	<mat-form-field class="input-amount">
+		<input matInput type="number" placeholder="Mängd" (keyup)="onUpdateAmount($event.target.value)"/>
 	</mat-form-field>
 	<mat-form-field class="input-qty">
-		<input matInput type="text" placeholder="Mått"/>
-	</mat-form-field> -->
+		<input matInput type="text" placeholder="Mått" (keyup)="onUpdateUnit($event.target.value)"/>
+	</mat-form-field>
 	<!-- <button class="add-button" (click)="onAddIngredient()" mat-stroked-button>Lägg till</button> -->
 </div>

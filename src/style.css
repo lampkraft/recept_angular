@@ -33,3 +33,6 @@ body {
 .displaynone {
 	display: none !important;
 }
+recept-recipe-post-list .mat-list-item-content {
+	padding: 16px !important;
+}

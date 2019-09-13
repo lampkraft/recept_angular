@@ -1,0 +1,17 @@
+<div class="image-preview-container">
+	<recept-loading class="image-loading" *ngIf="loading"></recept-loading>
+	<div [style.left]="-100 * currentImageIndex + 'vw'" class="images-container">
+		<div class="image-container" (swipeleft)="nextImage(true)" (swiperight)="prevImage(true)" *ngFor="let image of images">
+			<img class="image" [src]="image.base64Image"/>
+		</div>
+	</div>
+	<div class="dots">
+		<mat-icon (click)="goToImage(i)" class="dot" *ngFor="let image of images; let i = index">{{ currentImageIndex === i ? 'lens' : 'panorama_fish_eye' }}</mat-icon>
+	</div>
+	<!-- <div class="right-arrow-button">
+		<button mat-icon-button (click)="nextImage(true)"><mat-icon>navigate_next</mat-icon></button>
+	</div>
+	<div class="left-arrow-button">
+		<button mat-icon-button (click)="prevImage(true)"><mat-icon>navigate_before</mat-icon></button>
+	</div> -->
+</div>

@@ -3,14 +3,14 @@
 	<button mat-icon-button (click)="navigateBack()"><mat-icon>arrow_forward_ios</mat-icon></button>
 </recept-toolbar>
 <div class="heading-image">
-	<img src="{{headingImage}}">
+	<!-- <img src="{{headingImage}}"> -->
+	<recept-image-slider [images]="images" [loading]="loading.loadRecipeImagesLoading"></recept-image-slider>
 </div>
-
 <content class="content-container">
-		<!-- *ngIf="loading.loadRecipeLoading" -->
+	<!-- *ngIf="loading.loadRecipeLoading" -->
 	<div class="full-screen-loading-container" *ngIf="loading.loadRecipeLoading"><recept-loading [size]="100"></recept-loading></div>
 	<h2 class="mat-headline title-text">{{name}}<button mat-icon-button (click)="navigateToEditRecipe()"><mat-icon>edit</mat-icon></button></h2>
-	<recept-image-uploader [loading]="loading.loadRecipeImagesLoading" [readOnly]="true" [uploadedImages]="images"></recept-image-uploader>
+	<!-- <recept-image-uploader [loading]="loading.loadRecipeImagesLoading" [readOnly]="true" [uploadedImages]="images"></recept-image-uploader> -->
 	<p class="mat-body">{{description}}</p>
 	<h3 class="mat-title">Ingredienser</h3>
 	<mat-list>

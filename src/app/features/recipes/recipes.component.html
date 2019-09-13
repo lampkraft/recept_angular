@@ -9,7 +9,7 @@
 </div>
 <div class="recipes-container list-view" *ngIf="recipeView === 'list' && recipePosts && recipePosts.length > 0">
 	<mat-nav-list>
-		<div *ngFor="let recipe of recipePosts">
+		<div *ngFor="let recipe of recipePosts" class="recipe-post-list-item">
 			<recept-recipe-post-list *ngIf="recipe != null" (deleteRecipe)="onDeleteRecipe($event)" [recipe]="recipe"></recept-recipe-post-list>
 			<mat-divider></mat-divider>
 		</div>

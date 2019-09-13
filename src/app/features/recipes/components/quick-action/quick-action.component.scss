@@ -6,3 +6,9 @@
         justify-content: space-around;
     }
 }
+.floating-button {
+    bottom: 32px;
+    position: fixed;
+    right: 32px;
+    z-index: 9999;
+}

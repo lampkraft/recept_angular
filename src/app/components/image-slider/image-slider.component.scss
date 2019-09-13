@@ -1,0 +1,60 @@
+.image-preview-container {
+	background-color: black;
+	height: 100%;
+	position: relative;
+}
+.images-container {
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+	position: absolute;
+	transition: left 0.8s;
+}
+.image-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100vw;
+}
+.image {
+	flex-shrink: 0;
+	max-width: 100vw;
+	overflow: hidden;
+}
+.dots {
+	bottom: 16px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+	width: 100%;
+}
+.dot {
+	font-size: 14px;
+	height: 14px;
+	width: 14px;
+	&:not(:first-child) {
+		margin-left: 4px;
+	}
+}
+.right-arrow-button, .left-arrow-button {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	position: absolute;
+	top: 0;
+}
+.right-arrow-button {
+	height: 100%;
+	right: 0;
+}
+.left-arrow-button {
+	height: 100%;
+	left: 0;
+}
+.dot, .right-arrow-button, .left-arrow-button {
+	color: white;
+}
+.image-loading {
+	left: 0;
+	top: 0;
+}

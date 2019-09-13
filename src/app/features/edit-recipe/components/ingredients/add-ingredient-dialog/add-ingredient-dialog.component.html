@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>Lägg till ingrediens</h1>
 <div mat-dialog-content>
-	<recept-add-ingredient (search)="search($event)" [searchResult]="searchResult" (selectIngredient)="selectIngredient($event)"></recept-add-ingredient>
+	<recept-add-ingredient (search)="search($event)" [searchResult]="searchResult" (updateIngredient)="updateIngredient($event)"></recept-add-ingredient>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="cancel()">Avbryt</button>
