@@ -1,5 +1,6 @@
 <recept-toolbar>
-	<recept-search-recipes [matchingRecipes]="noOfRecipes$ | async"></recept-search-recipes>
+	<!-- <recept-search-recipes [matchingRecipes]="noOfRecipes$ | async"></recept-search-recipes> -->
+	<recept-search></recept-search>
 </recept-toolbar>
 <div class="full-screen-loading-container" *ngIf="loading.recipesLoading || loading.deleteRecipeLoading"><recept-loading [size]="100"></recept-loading></div>
 <div class="recipes-container grid-view" *ngIf="recipeView === 'grid' && recipePosts && recipePosts.length > 0">

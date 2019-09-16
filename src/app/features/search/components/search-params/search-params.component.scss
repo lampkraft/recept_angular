@@ -1,0 +1,19 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+}
+
+.action-buttons-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+}
+
+.ingredients, .tags {
+    margin-bottom: 15px;
+}

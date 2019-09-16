@@ -16,15 +16,18 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatSliderModule } from '@angular/material/slider'; 
 import { RecipeFlagsComponent } from '../components/recipe-flags/recipe-flags.component';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { LoadingComponent } from '../components/loading/loading.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ImageSliderComponent } from '../components/image-slider/image-slider.component';
 import { CommonModule } from '@angular/common';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -44,6 +47,7 @@ import { CommonModule } from '@angular/common';
     RecipeFlagsComponent,
     LoadingComponent,
     MatProgressSpinnerModule,
+    MatSliderModule,
     MatDividerModule,
     MatSidenavModule,
     MatButtonModule,
@@ -61,6 +65,8 @@ import { CommonModule } from '@angular/common';
     MatMenuModule,
     MatToolbarModule,
     MatTableModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   imports: [
     CommonModule,
@@ -71,6 +77,7 @@ import { CommonModule } from '@angular/common';
     MatBottomSheetModule,
 	  MatProgressSpinnerModule,
     MatDividerModule,
+    MatSliderModule,
     MatSidenavModule,
     MatButtonModule,
     MatListModule,
@@ -87,6 +94,8 @@ import { CommonModule } from '@angular/common';
     MatMenuModule,
     MatToolbarModule,
     MatTableModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: []

@@ -11,8 +11,9 @@ import { QuickActionComponent } from './components/quick-action/quick-action.com
 import { SearchRecipesComponent } from './components/search/search-recipes.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { RecipeService } from '../../services/recipes.service';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { RecipePostListComponent } from './components/recipe-post/list/recipe-post-list.component';
+import { SearchModule } from '../search/search.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { RecipePostListComponent } from './components/recipe-post/list/recipe-po
     SearchRecipesComponent,
   ],
   imports: [
+    SearchModule,
     SharedModule,
     BrowserAnimationsModule,
     CommonModule,

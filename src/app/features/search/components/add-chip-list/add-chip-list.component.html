@@ -1,0 +1,23 @@
+<mat-form-field>
+    <input matInput
+        type="text"
+        placeholder="{{chipPlaceholder}}"
+        [value]="searchValue"
+        (keyup)="search($event.target.value)"
+        [matAutocomplete]="auto"/>
+</mat-form-field>
+<mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let option of options" [value]="option" (click)="selectOption(option)">
+        {{ option.name }}
+    </mat-option>
+</mat-autocomplete>
+<mat-chip-list #chipList>
+    <mat-chip
+        *ngFor="let chip of chipData"
+        [selectable]="true"
+        [removable]="true"
+        (removed)="removeChip(chip)">
+        {{ chip.name }}
+    <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+</mat-chip-list>
