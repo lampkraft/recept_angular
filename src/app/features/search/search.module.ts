@@ -14,9 +14,9 @@ import { AddChipListComponent } from './components/add-chip-list/add-chip-list.c
         AddChipListComponent
     ],
     imports: [
-        SharedModule,
         BrowserAnimationsModule,
-        CommonModule
+        CommonModule,
+        SharedModule
     ],
     exports: [
         SearchComponent

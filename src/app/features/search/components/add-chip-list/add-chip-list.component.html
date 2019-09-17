@@ -1,4 +1,4 @@
-<mat-form-field>
+<mat-form-field floatLabel="always">
     <input matInput
         type="text"
         placeholder="{{chipPlaceholder}}"
@@ -16,8 +16,10 @@
         *ngFor="let chip of chipData"
         [selectable]="true"
         [removable]="true"
-        (removed)="removeChip(chip)">
+        (removed)="removeChip(chip)"
+        color="accent"
+        selected="true">
         {{ chip.name }}
-    <mat-icon matChipRemove>cancel</mat-icon>
+        <mat-icon matChipRemove>cancel</mat-icon>
     </mat-chip>
 </mat-chip-list>

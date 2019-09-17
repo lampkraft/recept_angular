@@ -15,6 +15,7 @@ export interface IFilterParameters {
 })
 export class SearchParamsComponent {
 	@Output() applyFilter: EventEmitter<IFilterParameters> = new EventEmitter();
+	sliderCalValue: number = 0;
 	filterParameters: IFilterParameters = {
 		tags: [],
 		fromDate: new Date(),
@@ -24,8 +25,9 @@ export class SearchParamsComponent {
 				id: '0'
 			}
 		],
-		maxNutritionValue: 500
+		maxNutritionValue: this.sliderCalValue
 	};
+	
 
 	constructor () {}
 
@@ -43,5 +45,9 @@ export class SearchParamsComponent {
 
 	tagsChange (tags: IChipData[]) {
 		console.log('tags', tags);
+	}
+
+	updateCalValue (event) {
+		this.sliderCalValue = event.value;
 	}
 }

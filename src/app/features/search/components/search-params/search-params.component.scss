@@ -12,8 +12,18 @@
 .section {
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .ingredients, .tags {
-    margin-bottom: 15px;
+}
+
+.strong-title {
+    font-weight: bold;
+}
+
+.slider-value {
+    position: absolute;
+    right: 15px;
+    top: 0px;
 }
